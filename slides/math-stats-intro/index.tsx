@@ -10,8 +10,8 @@ export const design: DesignSystem = {
     accent: '#ffd043',  // 粉筆黃色
   },
   fonts: {
-    display: '"Comic Sans MS", "Balsamiq Sans", "DFKai-SB", "BiauKai", system-ui, sans-serif',
-    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", sans-serif',
+    display: '"Fredoka", "Noto Sans TC", system-ui, sans-serif',
+    body: '"Noto Sans TC", system-ui, sans-serif',
   },
   typeScale: {
     hero: 140,
@@ -29,6 +29,8 @@ const chalkGreen = '#81c784';
 const chalkYellow = '#ffd043';
 
 const styles = `
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+
   @keyframes chalk-fade {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
@@ -744,7 +746,7 @@ const BarChartSteps: Page = () => (
             >
               <h4 style={{ margin: '0 0 10px 0', fontSize: 26, color: chalkRed }}>❌ 致命錯誤：長條寬度不一或黏在一起</h4>
               <p style={{ margin: 0, fontSize: 22, color: chalkMuted, lineHeight: 1.5 }}>
-                畫長條圖時，寬度不一致會誤導視覺，且<strong>各別類別（如蘋果、香蕉）是獨立項目</strong>，長條與長條間必須留下間距（空隙），切勿將它們黏在一起畫（黏在一起的叫作「直方圖」，用於連續型分組數據，例如體重區間）。
+                畫長條圖時，寬度不一致會誤導視覺，且<strong>各別類別（如蘋果、香蕉）是獨立項目</strong>，長條與長條間必須留下間距（空隙），切勿將懷們黏在一起畫（黏在一起的叫作「直方圖」，用於連續型分組數據，例如體重區間）。
               </p>
             </div>
             
@@ -828,13 +830,6 @@ const LineChartIntro: Page = () => (
             />
             
             {/* 折線路徑 (用 SVG 畫) */}
-            {/* 數據點座標對應: 
-                週一 (0): 21°C -> 10%
-                週二 (1): 24°C -> 40%
-                週三 (2): 28°C -> 80% (Max)
-                週四 (3): 23°C -> 30%
-                週五 (4): 26°C -> 60%
-            */}
             <svg
               style={{
                 position: 'absolute',
@@ -855,8 +850,7 @@ const LineChartIntro: Page = () => (
                 strokeLinejoin="round"
               />
               
-              {/* 趨勢提示符號 (手繪箭頭效果) */}
-              {/* 週二到週三升溫 */}
+              {/* 趨勢提示符號 */}
               <path
                 className="chalk-dash-flow"
                 d="M 170 170 L 220 110"
@@ -866,7 +860,6 @@ const LineChartIntro: Page = () => (
               />
               <path d="M 220 110 L 210 112 M 220 110 L 218 120" stroke={chalkRed} strokeWidth="3" strokeLinecap="round" />
               
-              {/* 週三到週四降溫 */}
               <path
                 className="chalk-dash-flow"
                 d="M 280 110 L 320 200"
